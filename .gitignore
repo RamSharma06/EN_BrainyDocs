@@ -1,0 +1,17 @@
+# Ignore environment variables
+.env
+.env/Backend
+.env/Frontend
+
+# Ignore folders
+Docs_dir/
+
+# Python cache and virtual environment
+__pycache__/
+venv/
+*.pyc
+
+# Node modules and build folders (for React frontend)
+node_modules/
+dist/
+build/

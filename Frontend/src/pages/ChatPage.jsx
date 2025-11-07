@@ -280,18 +280,6 @@ export default function ChatPage() {
     await deleteSessionOnServer(session.session_id);
   };
 
-  const onSessionDoubleClick = async (session) => {
-    if (!session || !session.session_id) return;
-    const newName = prompt("Enter new title for this session:", session.title || "");
-    if (newName === null) return;
-    if (!newName.trim()) {
-      alert("Title must be non-empty.");
-      return;
-    }
-    await renameSessionOnServer(session.session_id, newName.trim());
-    await fetchSessions();
-    await loadChatSessionById(session.session_id);
-  };
 
   // ---- Rendering ----
   return (
@@ -349,7 +337,6 @@ export default function ChatPage() {
                   key={item.session_id}
                   onClick={() => loadChatSession(item)}
                   onContextMenu={(e) => onSessionContextMenu(e, item)}
-                  onDoubleClick={() => onSessionDoubleClick(item)}
                   className={`cursor-pointer bg-gray-300 dark:bg-gray-800 px-3 py-2 rounded-xl text-sm truncate hover:bg-gray-400 dark:hover:bg-gray-700 ${
                     currentSessionId === item.session_id ? "ring-2 ring-purple-500" : ""
                   }`}

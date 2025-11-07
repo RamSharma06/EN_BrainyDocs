@@ -442,7 +442,7 @@ def chat_with_session(session_id: str, req: ChatRequest, user=Depends(get_curren
                     upsert=True
                 )
         except Exception as e:
-            print(f"⚠️ Auto title generation failed for session {session_id}: {e}")
+            print(f" Auto title generation failed for session {session_id}: {e}")
 
     # Update user's recent_chats (move to front and update title if available)
     # Use the freshest known title (auto_title if just created, else session.title)
